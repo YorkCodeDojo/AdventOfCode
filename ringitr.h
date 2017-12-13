@@ -4,7 +4,7 @@
 template <typename T, typename Container = std::vector<T>, typename Iterator = Container::iterator>
 class RingIterator : public std::iterator <std::bidirectional_iterator_tag, T, ptrdiff_t>
 {
-    Container& data;
+    const Container& data;
     Iterator   cursor;
     Iterator   begin;
     Iterator   end;
