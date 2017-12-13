@@ -86,6 +86,14 @@ int main()
         });
     }));
 
+    // P3, 1: Spiral Memory
+    //auto spiralCount = 368078;
+    auto spiralCount = 12;
+    auto shell = ((spiralCount - 1) >> 3);
+    auto shellLocation = spiralCount - ((shell - 1) << 3);
+    auto shellSize = (shell * 8);
+    ShowResult("P3, 1", shellSize);
+
     system("pause");
     return 0;
 }
