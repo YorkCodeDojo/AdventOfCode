@@ -13,12 +13,13 @@
 #include <cassert>
 
 #include "utils.h"
+#include "glm/glm.hpp"
 
 using namespace std;
 
 void ShowResult(const std::string& strName, int val)
 {
-    std::cout << strName << ": " << val << std::endl; 
+    std::cout << strName << ": " << val << std::endl;
 }
 
 
@@ -87,12 +88,8 @@ int main()
     }));
 
     // P3, 1: Spiral Memory
-    //auto spiralCount = 368078;
-    auto spiralCount = 12;
-    auto shell = ((spiralCount - 1) >> 3);
-    auto shellLocation = spiralCount - ((shell - 1) << 3);
-    auto shellSize = (shell * 8);
-    ShowResult("P3, 1", shellSize);
+    auto coord = UlamIndexToCoords(368078);
+    ShowResult("P3,1", std::abs(coord.x) + std::abs(coord.y));
 
     system("pause");
     return 0;

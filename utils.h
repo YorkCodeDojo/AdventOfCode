@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "StringUtils.h"
 #include <chrono>
+#include "glm/glm.hpp"
 #include "ringitr.h"
 
 template<typename C, typename count, typename Op>
@@ -68,3 +69,33 @@ private:
     int64_t now;
     std::string m_strName;
 };
+
+inline glm::vec2 UlamIndexToCoords(int n)
+{
+    const auto k = std::ceil((std::sqrt(n) - 1) / 2);
+    auto t = 2 * k + 1;
+    auto m = std::pow(t, 2);
+
+    t -= 1;
+
+    if (n >= m - t)
+    {
+        return glm::vec2(k - (m - n), -k);
+    }
+
+    m -= t;
+
+    if (n >= m - t) {
+        return glm::vec2(-k, -k + (m - n));
+    }
+
+    m -= t;
+
+    if (n >= m - t)
+    {
+        return glm::vec2(-k + (m - n), k);
+    }
+
+    return glm::vec2(k, k - (m - n - t));
+};
+
